@@ -1,0 +1,138 @@
+Thursday 2025-03-13 11h35 pt
+
+IDE Arduino v2.3.4
+
+ESP-NOW <--> communication test.
+
+Below, part of the Serial Monitor output:
+
+---------------------------------------------------------------------
+
+2025-03-13 15h14  Slave:
+...
+WiFi Connected to: <SSID>
+IP address: 
+192.168.X.YYY
+setup(): Starting NTP timeClient
+Datetime from NTP-server: getFormattedDate(): strlen(resultStr) = 20
+2025-03-13T15:14:47Z
+RTC set to: Thu   25-03-13 15:14:47
+disconWiFi(): WiFi status: WL_STOPPED
+setup(): WiFi disconnected and mode switched to OFF
+WiFi status: WL_STOPPED
+setupESPNOW(): WiFi mode set to: WIFI_STA
+setupESPNOW(): successfull
+rtc interval set to: 1 second(s).
+e-Paper display refresh interval set to: 10 seconds.
+Datetime send interval set to: 3600 seconds.
+Sent NTP datetime with success
+
+2025-Mar-13 15:14:47
+Day of the week: Thu
+RTC Temperature: 21.75 ºC
+
+--------------------------------------------------------------------------------
+2025-03-13 15h14  Master:
+
+Thu, Mar 13 2025 15:14:44. Packet nr: 7 Delivery Failed :(
+handleIncomingData(): NTP datetime received from slave: 2025-03-13T15:14:47Z
+setInternalRTC(): Setting internal rtc to (ss: 47, mm; 14, hh: 15, dd: 13, mo: 3, yy: 2025)
+setInternalRTC(): Internal RTC datetime now: Thursday, March 13 2025 15:14:47
+Temperature: 21.56 deg C
+Humidity: 66.62 % rH
+Thu, Mar 13 2025 15:14:47. Packet nr: 8 Delivery Failed :(
+Temperature: 21.56 deg C
+Humidity: 66.76 % rH
+Thu, Mar 13 2025 15:14:57. Packet nr: 9 Delivery Success :)
+Temperature: 21.56 deg C
+Humidity: 66.63 % rH
+Thu, Mar 13 2025 15:15:07. Packet nr: 10 Delivery Success :)
+Temperature: 21.61 deg C
+Humidity: 66.61 % rH
+Thu, Mar 13 2025 15:15:17. Packet nr: 11 Delivery Success :)
+Temperature: 21.69 deg C
+Humidity: 66.34 % rH
+Thu, Mar 13 2025 15:15:27. Packet nr: 12 Delivery Success :)
+Temperature: 21.71 deg C
+Humidity: 66.07 % rH
+Thu, Mar 13 2025 15:15:37. Packet nr: 13 Delivery Success :)
+
+[...]
+
+Thu, Mar 13 2025 16:14:15. Packet nr: 107 Delivery Success :)
+Temperature: 21.38 deg C
+Humidity: 70.81 % rH
+Thu, Mar 13 2025 16:14:25. Packet nr: 108 Delivery Success :)
+Temperature: 21.42 deg C
+Humidity: 71.50 % rH
+Thu, Mar 13 2025 16:14:35. Packet nr: 109 Delivery Success :)
+handleIncomingData(): NTP datetime received from slave: 2025-03-13T16:14:49Z                <<<=== Correct! Exactly after 1 hour a datetime refresh
+setInternalRTC(): Setting internal rtc to (ss: 49, mm; 14, hh: 16, dd: 13, mo: 3, yy: 2025)
+setInternalRTC(): Internal RTC datetime now: Thursday, March 13 2025 16:14:49
+Temperature: 21.42 deg C
+Humidity: 70.60 % rH
+Thu, Mar 13 2025 16:14:49. Packet nr: 110 Delivery Success :)
+Temperature: 21.43 deg C
+Humidity: 70.35 % rH
+
+[...]
+
+Thu, Mar 13 2025 17:14:27. Packet nr: 210 Delivery Success :)
+Temperature: 21.02 deg C
+Humidity: 70.71 % rH
+Thu, Mar 13 2025 17:14:37. Packet nr: 211 Delivery Success :)
+handleIncomingData(): NTP datetime received from slave: 2025-03-13T17:14:49Z                <<<=== Correct! Exactly after 1 hour a datetime refresh
+setInternalRTC(): Setting internal rtc to (ss: 49, mm; 14, hh: 17, dd: 13, mo: 3, yy: 2025)
+setInternalRTC(): Internal RTC datetime now: Thursday, March 13 2025 17:14:49
+Temperature: 21.02 deg C
+Humidity: 70.68 % rH
+Thu, Mar 13 2025 17:14:49. Packet nr: 212 Delivery Success :)
+Temperature: 21.03 deg C
+Humidity: 70.69 % rH
+
+[...]
+
+Thu, Mar 13 2025 18:14:27. Packet nr: 56 Delivery Success :)
+Temperature: 21.63 deg C
+Humidity: 66.07 % rH
+Thu, Mar 13 2025 18:14:37. Packet nr: 57 Delivery Success :)
+handleIncomingData(): NTP datetime received from slave: 2025-03-13T18:14:49Z                <<<=== Correct! Exactly after 1 hour a datetime refresh
+setInternalRTC(): Setting internal rtc to (ss: 49, mm; 14, hh: 18, dd: 13, mo: 3, yy: 2025)
+setInternalRTC(): Internal RTC datetime now: Thursday, March 13 2025 18:14:49
+Temperature: 21.65 deg C
+Humidity: 66.24 % rH
+Thu, Mar 13 2025 18:14:49. Packet nr: 58 Delivery Success :)
+Temperature: 21.64 deg C
+Humidity: 66.12 % rH
+
+[...]
+
+Thu, Mar 13 2025 20:14:27. Packet nr: 5 Delivery Success :)
+Temperature: 22.25 deg C
+Humidity: 59.88 % rH
+Thu, Mar 13 2025 20:14:37. Packet nr: 6 Delivery Success :)
+handleIncomingData(): NTP datetime received from slave: 2025-03-13T20:14:49Z                <<<=== Correct! Exactly after 1 hour a datetime refresh
+setInternalRTC(): Setting internal rtc to (ss: 49, mm; 14, hh: 20, dd: 13, mo: 3, yy: 2025)
+setInternalRTC(): Internal RTC datetime now: Thursday, March 13 2025 20:14:49
+Temperature: 22.32 deg C
+Humidity: 59.70 % rH
+Thu, Mar 13 2025 20:14:49. Packet nr: 7 Delivery Success :)
+Temperature: 22.36 deg C
+Humidity: 59.40 % rH
+
+[...]
+
+Thu, Mar 13 2025 22:14:27. Packet nr: 209 Delivery Success :)
+Temperature: 20.48 deg C
+Humidity: 64.13 % rH
+Thu, Mar 13 2025 22:14:37. Packet nr: 210 Delivery Success :)
+handleIncomingData(): NTP datetime received from slave: 2025-03-13T22:14:49Z                <<<=== Correct! Exactly after 1 hour a datetime refresh
+setInternalRTC(): Setting internal rtc to (ss: 49, mm; 14, hh: 22, dd: 13, mo: 3, yy: 2025)
+setInternalRTC(): Internal RTC datetime now: Thursday, March 13 2025 22:14:49
+Temperature: 20.47 deg C
+Humidity: 64.13 % rH
+Thu, Mar 13 2025 22:14:49. Packet nr: 211 Delivery Success :)
+Temperature: 20.47 deg C
+Humidity: 64.09 % rH
+
+
