@@ -42,9 +42,9 @@ Hardware connected to the Lolin S3 PRO (slave) device:
 SHORT DESCRIPTION:
   At startup this device will connect to the internet via WiFi.
   When WiFi is established, this sketch will get a datetime stamp from a NTP-server.
-  After reception of the NTP datetime stamp, this sketch will set the external RTC with the received datetimestamp.
+  After reception of the NTP datetime stamp, this sketch will set the external RTC with the received datetime stamp.
   Immediately after this sketch will send the datetime stamp to the master device.
-  Next, with an interval of one hour, sending an updated datetimestampto the master device (this time from the external RTC).
+  Next, with an interval of one hour, sending an updated datetime stamp to the master device (this time from the external RTC).
   The master device will sent, at intervals of (initially) 10 seconds, temperature, humidity and packet number to this slave device.
   At the moment of a successful reception, the builtin RGB led will blink GREEN.
   After reception this sketch will display the received data on the connected e-Paper display.
