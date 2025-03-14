@@ -24,8 +24,8 @@ Hardware connected to the Lolin S3 PRO (slave) device:
 a) a temperature and humidity sensor.
 
 SHORT DESCRIPTION:
-  At startup this device will wait to receive a datetime stamp from the slave device (which has an external RTC connected).
-  After reception of the datetime stamp, this sketch will set the internal RTC with the received datetime stamp.
+  At startup this device will wait to receive an NTP datetime stamp from the slave device (which has an external RTC connected).
+  After reception of the datetime stamp, this sketch will set the internal RTC with the received NTP datetime stamp.
   Next, with an interval of one hour, the slave device will send an updated datetimestamp (this time from it's external RTC).
   Every time this sketch will then update the internal RTC of this device.
   This master device will sent, at intervals of (initially) 10 seconds, temperature, humidity and packet number to the slave device.
