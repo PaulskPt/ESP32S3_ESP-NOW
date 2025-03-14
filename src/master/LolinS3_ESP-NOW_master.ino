@@ -286,7 +286,7 @@ void getReadings(){
   
     Serial.print("Temperature: "); 
     Serial.print(aht20_temperature.temperature); 
-    Serial.println(" deg C");
+    Serial.println(" ºC");
     Serial.print("Humidity: "); 
     Serial.print(aht20_humidity.relative_humidity); 
     Serial.println(" % rH");
