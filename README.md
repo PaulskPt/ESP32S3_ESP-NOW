@@ -1,7 +1,7 @@
 ESP32S3 ESP-NOW test
 
 PURPOSE: 
-  Test ESP-NOW communication between two microcontroller boards, each with an Esprssif ESP32-S3 processor.
+  Test ESP-NOW communication between two microcontroller boards, each with an Espressif ESP32-S3 processor.
   One device is set to function as the "Master" device.
   The other device is set to function as the "Slave" device.
 
