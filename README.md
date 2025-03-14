@@ -27,7 +27,7 @@ SHORT DESCRIPTION:
   At startup this device will wait to receive an NTP datetime stamp from the slave device (which has an external RTC connected).
   After reception of the datetime stamp, this sketch will set the internal RTC with the received NTP datetime stamp.
   Next, with an interval of one hour, the slave device will send an updated datetimestamp (this time from it's external RTC).
-  Every time this sketch will then update the internal RTC of this device.
+  Every time this sketch will then update the internal RTC of this master device.
   This master device will sent, at intervals of (initially) 10 seconds, temperature, humidity and packet number to the slave device.
   At the moment of a successful transmission, the builtin RGB led will blink GREEN. If transmission fails, the led will blink RED.
   Information in text of the actions taken place, will be printed to the Serial Monitor window of the Arduino IDE (or other serial modem app).
