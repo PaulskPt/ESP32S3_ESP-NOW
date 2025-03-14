@@ -74,7 +74,7 @@ Monitor_output.txt.
 
 Images: 
 
-Images, mostly edited screenshots, are in the folder: ```images```.
+Images, mostly edited screenshots, are in the folder: "images".
 
 
 Links to product pages of the hardware used:
