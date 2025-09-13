@@ -23,6 +23,9 @@ The software consists of two ESP-NOW parts and one utility sketch:
   
   c) sketch to determine the MAC-address for each device [here](https://github.com/PaulskPt/ESP32S3_ESP-NOW/tree/main/src/get_MacAddress).
 
+## License
+MIT
+
 ## MASTER DEVICE
 
 Hardware connected to the Lolin S3 PRO (slave) device:
