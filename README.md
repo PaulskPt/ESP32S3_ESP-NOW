@@ -2,8 +2,8 @@
 
 ## PURPOSE: 
   Test ESP-NOW communication between two microcontroller boards, each with an Espressif ESP32-S3 processor.
-  One device is set to function as the "Master" device.
-  The other device is set to function as the "Slave" device.
+  One device is set to the role of "Master" device.
+  The other device is set to the role of "Slave" device.
 
 ## Hardware used
 
