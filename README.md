@@ -1,7 +1,7 @@
 ESP32S3 ESP-NOW test
 
 PURPOSE: 
-  Test ESP-NOW communication between two microcontroller boards, each with an Esprssif ESP32-S3 processor.
+  Test ESP-NOW communication between two microcontroller boards, each with an Espressif ESP32-S3 processor.
   One device is set to function as the "Master" device.
   The other device is set to function as the "Slave" device.
 
@@ -27,7 +27,7 @@ SHORT DESCRIPTION:
   At startup this device will wait to receive an NTP datetime stamp from the slave device (which has an external RTC connected).
   After reception of the datetime stamp, this sketch will set the internal RTC with the received NTP datetime stamp.
   Next, with an interval of one hour, the slave device will send an updated datetimestamp (this time from it's external RTC).
-  Every time this sketch will then update the internal RTC of this device.
+  Every time this sketch will then update the internal RTC of this master device.
   This master device will sent, at intervals of (initially) 10 seconds, temperature, humidity and packet number to the slave device.
   At the moment of a successful transmission, the builtin RGB led will blink GREEN. If transmission fails, the led will blink RED.
   Information in text of the actions taken place, will be printed to the Serial Monitor window of the Arduino IDE (or other serial modem app).
@@ -42,9 +42,9 @@ Hardware connected to the Lolin S3 PRO (slave) device:
 SHORT DESCRIPTION:
   At startup this device will connect to the internet via WiFi.
   When WiFi is established, this sketch will get a datetime stamp from a NTP-server.
-  After reception of the NTP datetime stamp, this sketch will set the external RTC with the received datetimestamp.
+  After reception of the NTP datetime stamp, this sketch will set the external RTC with the received datetime stamp.
   Immediately after this sketch will send the datetime stamp to the master device.
-  Next, with an interval of one hour, sending an updated datetimestampto the master device (this time from the external RTC).
+  Next, with an interval of one hour, sending an updated datetime stamp to the master device (this time from the external RTC).
   The master device will sent, at intervals of (initially) 10 seconds, temperature, humidity and packet number to this slave device.
   At the moment of a successful reception, the builtin RGB led will blink GREEN.
   After reception this sketch will display the received data on the connected e-Paper display.
@@ -74,7 +74,7 @@ Monitor_output.txt.
 
 Images: 
 
-Images, mostly edited screenshots, are in the folder: ```images```.
+Images, mostly edited screenshots, are in the folder: "images".
 
 
 Links to product pages of the hardware used:
