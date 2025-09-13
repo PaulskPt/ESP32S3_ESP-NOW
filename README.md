@@ -16,11 +16,13 @@
 
 ## Software
 The software consists of two parts: 
-```
-a) for the master device; 
-b) for the slave device.
-In the "src" folder is also a subfolder with a sketch to determine the MAC-address for each of the two devices used.
-```
+
+  a) for the master device;
+  
+  b) for the slave device.
+  
+  In the "src" folder is a subfolder with a sketch to determine the MAC-address for each device [here](https://github.com/PaulskPt/ESP32S3_ESP-NOW/tree/main/src/get_MacAddress).
+
 ## MASTER DEVICE
 
 Hardware connected to the Lolin S3 PRO (slave) device:
