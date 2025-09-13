@@ -81,7 +81,7 @@ Images, mostly edited screenshots, are in the folder: "images".
 - Lolin S3 [info](https://pt.aliexpress.com/item/1005004643475363.html?gatewayAdapt=glo2bra);
 - Lolin S3 PRO [info](https://pt.aliexpress.com/item/1005004931357085.html?gatewayAdapt=glo2bra);
 - Waveshare 2.13in 3-color e-Paper display [info](https://www.waveshare.com/wiki/Main_Page#Display-e-Paper);
-- External RTC DS3231 for Pi [info](https://www.miravia.es). Aliexpress also sells this model of RTC;
+- External RTC DS3231 for Pi [info](https://www.aliexpress.com/p/tesla-landing/index.html?scenario=c_ppc_item_bridge&productId=1005008622717984&_immersiveMode=true&withMainCard=true&src=google&aff_platform=true&isdl=y&src=google&albch=shopping&acnt=615-992-9880&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=_oFgTQeV&gclsrc=aw.ds&&albagn=888888&&ds_e_adid=&ds_e_matchtype=&ds_e_device=c&ds_e_network=x&ds_e_product_group_id=&ds_e_product_id=pt1005008622717984&ds_e_product_merchant_id=761104415&ds_e_product_country=PT&ds_e_product_language=pt&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=22568097293&albag=&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gad_campaignid=22561749573&gbraid=0AAAAA_TvRHpgQaBmOOx9v5-Ms7Xf8kTNE&gclid=Cj0KCQjwrJTGBhCbARIsANFBfgvvqc1KjWdRe_i8AZGMX5ut5M7Z6T4P3YPPCLKOHh16SmM8tELUXNIaAtCzEALw_wcB);
 - Adafruit AHT20 temperature and humidity sensor [info](https://www.adafruit.com/product/4566);
 
 
