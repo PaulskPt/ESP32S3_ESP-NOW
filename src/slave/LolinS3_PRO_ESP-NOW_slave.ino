@@ -510,17 +510,17 @@ bool connect_WiFi(void)
     ret = true;
     if (my_debug) {
       Serial.print(F("\r\nWiFi Connected to: "));
-      Serial.printf("%s\n",WIFI_SSID);
-      Serial.println("IP address: ");
+      Serial.printf("%s\n", WIFI_SSID);
+      Serial.print("IP address: ");
       Serial.println(WiFi.localIP());
     }
     else {
-      Serial.print(F("\r\nWiFi Connected"));
+      Serial.println(F("\r\nWiFi Connected"));
     }
   }
   else
   {
-    Serial.print(F("\r\nWiFi connection failed."));
+    Serial.println(F("\r\nWiFi connection failed."));
   }
   return ret;
 }
