@@ -6,7 +6,7 @@
 */
 /*
   Changes by Paulus Schulinck (@PaulskPt Github)
-  Arduino sketch: LolinS3_ESP-NOW_master.ini
+  Arduino sketch: LolinS3_ESP-NOW_master.ino
 
    Hardware connected to the Lolin S3 device:
    a) an Adafruit AHT20 temperature and humidity sensor.
