@@ -17,7 +17,7 @@
 ## Software
 The software consists of two parts: 
 
-  a) for the master device;
+  a) for the master device [here](https://github.com/PaulskPt/ESP32S3_ESP-NOW/tree/main/src/master);
   
   b) for the slave device.
   
