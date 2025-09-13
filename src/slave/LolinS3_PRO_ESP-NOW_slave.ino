@@ -6,7 +6,7 @@
 */
 /*
    Changes by Paulus Schulinck (@PaulskPt Github)
-   Arduino sketch: LolinS3_ESP-NOW_slave.ini
+   Arduino sketch: LolinS3_ESP-NOW_slave.ino
 
    Hardware connected to the Lolin S3 PRO device:
    a) a small DS3231 external RTC board marked "DS3231 for Pi";
@@ -45,6 +45,17 @@
 #define NTP_OFFSET  0 // In seconds for Europe/Lisbon time zone
 #define NTP_INTERVAL 60 * 1000    // In miliseconds
 #define NTP_ADDRESS  SECRET_NTP_SERVER_1
+
+/*
+   The ESP-NOW API changed in ESP-IDF v5.0+, and the Arduino core for ESP32 has now adopted that newer version.
+   Espressif refactored ESP-NOW to unify it with their Wi-Fi stack. 
+   Instead of passing just the MAC address, the new wifi_tx_info_t struct includes richer metadata 
+   about the transmission — including destination MAC, rate, and status flags.
+   For this the #define USE_UPDATE below. You can view the difference between the two versions of OnDataSent and OnDataRecv.
+*/
+#ifndef USE_UPDATE
+#define USE_UPDATE
+#endif
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, NTP_ADDRESS, NTP_OFFSET, NTP_INTERVAL);
@@ -251,6 +262,28 @@ bool setupESPNOW(void) {
 bool DataSentFlag = false;
 esp_now_send_status_t LastSentStatus;
 
+#ifdef USE_UPDATE
+/* See: https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/network/esp_wifi.html */
+void OnDataSent(const wifi_tx_info_t *info, esp_now_send_status_t status) {
+  if (info) {
+    Serial.print("Destination MAC: ");
+    for (int i = 0; i < 6; i++) {
+      Serial.printf("%02X", info->des_addr[i]);
+      if (i < 5) Serial.print(":");
+    }
+    Serial.println();
+  }
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Failed");
+  if (status ==0){
+    success = "Delivery Success :)";
+  }
+  else{
+    success = "Delivery Failed :(";
+  }
+}
+
+#else
 // Callback when data is sent
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   DataSentFlag = true;
@@ -266,10 +299,46 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   }
   */
 }
+#endif 
 
 // Callback when data is received
 // Put as few as possible print statements in this function
 // because it happened that text got not printed
+#ifdef USE_UPDATE
+void OnDataRecv(const esp_now_recv_info_t *recv_info, const uint8_t *incomingData, int len) {
+  Serial.println("Data received!");
+
+  if (recv_info) {
+    Serial.print("From MAC: ");
+    for (int i = 0; i < 6; i++) {
+      Serial.printf("%02X", recv_info->src_addr[i]);
+      if (i < 5) Serial.print(":");
+    }
+    Serial.println();
+    //digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+    neoPixShow(60,0,0);
+    memcpy(&incomingReadings, incomingData, sizeof(incomingReadings));
+    bytes_recvd = len; // copy to global var
+    incomingTemp = incomingReadings.temp;
+    incomingHum = incomingReadings.hum;
+    RX_PacketNr = incomingReadings.packetNr;
+    new_data_rcvd = true;
+    delay(500);                      // wait for a second
+    //digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+    neoPixShow(0,0,0);
+	// delay(1000);
+  }
+
+  Serial.print("Data length: ");
+  Serial.println(len);
+
+  Serial.print("Payload: ");
+  for (int i = 0; i < len; i++) {
+    Serial.printf("%02X ", incomingData[i]);
+  }
+  Serial.println();
+}
+#else 
 void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   //digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
   neoPixShow(60,0,0);
@@ -284,6 +353,7 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   neoPixShow(0,0,0);
   //delay(1000);
 }
+#endif
 
 void testdrawtext(char *text, uint16_t color)
 {

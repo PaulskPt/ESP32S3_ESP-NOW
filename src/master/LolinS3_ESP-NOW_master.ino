@@ -34,6 +34,17 @@
 #include <Adafruit_AHTX0.h>
 #include <ESP32Time.h>
 
+/*
+   The ESP-NOW API changed in ESP-IDF v5.0+, and the Arduino core for ESP32 has now adopted that newer version.
+   Espressif refactored ESP-NOW to unify it with their Wi-Fi stack. 
+   Instead of passing just the MAC address, the new wifi_tx_info_t struct includes richer metadata 
+   about the transmission — including destination MAC, rate, and status flags.
+   For this the #define USE_UPDATE below. You can view the difference between the two versions of OnDataSent and OnDataRecv.
+*/
+#ifndef USE_UPDATE
+#define USE_UPDATE
+#endif
+
 #ifdef USE_RTC
 #undef USE_RTC
 #endif
@@ -128,6 +139,38 @@ void neoPixShow(int r=0, int g=0, int b=0) {
   }
 }
 
+#ifdef USE_UPDATE
+/* See: https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/network/esp_wifi.html */
+void OnDataSent(const wifi_tx_info_t *info, esp_now_send_status_t status) {
+  if (info) {
+    Serial.print("Destination MAC: ");
+    for (int i = 0; i < 6; i++) {
+      Serial.printf("%02X", info->des_addr[i]);
+      if (i < 5) Serial.print(":");
+    }
+    Serial.println();
+  }
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Failed");
+  if (status ==0){
+    success = "Delivery Success :)";
+    neoPixShow(0,60,0); // GREEN
+    //digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+    delay(500);                         // wait for a half second
+    //digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+    neoPixShow(0,0,0);
+  }
+  else{
+    success = "Delivery Failed :(";
+    neoPixShow(60,0,0); // RED
+    //digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+    delay(500);                         // wait for a half second
+    neoPixShow(0,0,0);
+    //digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+  }
+}
+
+#else
 // Callback when data is sent
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   //Serial.print(F("\r\nLast Packet Send Status:\t"));
@@ -149,7 +192,20 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
     neoPixShow(0,0,0);
   }
 }
+#endif
 
+#ifdef USE_UPDATE
+void OnDataRecv(const esp_now_recv_info_t *recv_info, const uint8_t *incomingData, int len) {
+
+  if (recv_info) {
+    memcpy(&rcvdNTPdatetime, incomingData, len); // was: , sizeof(rcvdNTPdatetime));
+    incomingDataLen = len;
+    if (incomingDataLen > 0)
+      new_data_rcvd = true;
+    }
+  }
+}
+#else
 // Callback when data is received
 void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   memcpy(&rcvdNTPdatetime, incomingData, len); // was: , sizeof(rcvdNTPdatetime));
@@ -157,6 +213,7 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   if (incomingDataLen > 0)
     new_data_rcvd = true;
 }
+#endif
 
 void setInternalRTC() {
   static constexpr const char txt0[] PROGMEM = "setInternalRTC(): ";
