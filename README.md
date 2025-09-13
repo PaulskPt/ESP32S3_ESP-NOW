@@ -19,7 +19,7 @@ The software consists of two parts:
 ```
 a) for the master device; 
 b) for the slave device.
-In the "src" folder is also a subfolder with a sketch you can use to determine the MAC-address for each of the two devices used.
+In the "src" folder is also a subfolder with a sketch to determine the MAC-address for each of the two devices used.
 ```
 ## MASTER DEVICE
 
@@ -27,7 +27,7 @@ Hardware connected to the Lolin S3 PRO (slave) device:
 
 a) a temperature and humidity sensor.
 
-DESCRIPTION:
+DESCRIPTION
 
   At startup this device will wait to receive an NTP datetime stamp from the slave device (which has an external RTC connected).
   After reception of the datetime stamp, this sketch will set the internal RTC with the received NTP datetime stamp.
@@ -46,7 +46,7 @@ Hardware connected to the Lolin S3 PRO (slave) device:
   b) a Lolin 2.13inch e-Paper 3-color display, 250x122px. Needs EPD library. See [repo](https://github.com/wemos/LOLIN_EPD_Library)
 
 
-DESCRIPTION:
+DESCRIPTION
 
   At startup this device will connect to the internet via WiFi.
   When WiFi is established, this sketch will get a datetime stamp from a NTP-server.
