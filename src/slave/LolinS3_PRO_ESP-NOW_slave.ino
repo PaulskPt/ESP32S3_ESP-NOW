@@ -625,7 +625,7 @@ void pollTimeClient() {
     EPD.setCursor(EPD_Width-10, 80);
     EPD.println("PM");
   }
-  elseNTPdatetime
+  else
   {
     EPD.setCursor(EPD_Width-10, 60);
     EPD.println("AM");
