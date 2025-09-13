@@ -1,11 +1,11 @@
-ESP32S3 ESP-NOW test
+# ESP32S3 ESP-NOW test
 
-PURPOSE: 
+## PURPOSE: 
   Test ESP-NOW communication between two microcontroller boards, each with an Espressif ESP32-S3 processor.
   One device is set to function as the "Master" device.
   The other device is set to function as the "Slave" device.
 
-Hardware used:
+## Hardware used
 
     1) Lolin ESP32-S3 (master);
     2) Lolin ESP32-S3 PRO (slave);
@@ -13,12 +13,14 @@ Hardware used:
     4) temperature and humidity sensor;
     5) external RTC module.
 
+
+## Software
 The software consists of two parts: 
 a) for the master device; 
 b) for the slave device.
 In the "src" folder is also a subfolder with a sketch you can use to determine the MAC-address for each of the two devices used.
 
-THE MASTER DEVICE
+## THE MASTER DEVICE
 
 Hardware connected to the Lolin S3 PRO (slave) device:
 a) a temperature and humidity sensor.
@@ -32,7 +34,7 @@ SHORT DESCRIPTION:
   At the moment of a successful transmission, the builtin RGB led will blink GREEN. If transmission fails, the led will blink RED.
   Information in text of the actions taken place, will be printed to the Serial Monitor window of the Arduino IDE (or other serial modem app).
 
-THE SLAVE DEVICE
+## THE SLAVE DEVICE
 
 Hardware connected to the Lolin S3 PRO (slave) device:
   a) a small DS3231 external RTC board marked "DS3231 for Pi";
@@ -50,7 +52,7 @@ SHORT DESCRIPTION:
   After reception this sketch will display the received data on the connected e-Paper display.
   Information in text of the actions taken place, will be printed to the Serial Monitor window of the Arduino IDE (or other serial modem app).
 
-File secret.h (used with the slave device):
+## File secret.h (used with the slave device):
 
 Update the file secret.h as far as needed:
 ```
@@ -63,21 +65,18 @@ Update the file secret.h as far as needed:
  At this moment file secret.h has the following timezone and timezone_code defined:
     #define SECRET_NTP_TIMEZONE3 "Europe/Lisbon"
     #define SECRET_NTP_TIMEZONE3_CODE "WET0WEST,M3.5.0/1,M10.5.0"
-
 ```
+## Docs
 
-Docs:
-
-```
 Monitor_output.txt.
 
 
-Images: 
+## Images
 
 Images, mostly edited screenshots, are in the folder: "images".
 
 
-Links to product pages of the hardware used:
+## Links to product pages of the hardware used:
 
 - Lolin S3 [info](https://pt.aliexpress.com/item/1005004643475363.html?gatewayAdapt=glo2bra);
 - Lolin S3 PRO [info](https://pt.aliexpress.com/item/1005004931357085.html?gatewayAdapt=glo2bra);
@@ -86,7 +85,12 @@ Links to product pages of the hardware used:
 - Adafruit AHT20 temperature and humidity sensor [info](https://www.adafruit.com/product/4566);
 
 
-Known Issues:
+## Update 2025-09-13
+
+The sketches of the master and slave have been updated because the ESP-NOW API has changed in ESP-IDF v5.0+.
+
+## Known Issues
+
 None.
 
 
