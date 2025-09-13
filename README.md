@@ -21,7 +21,7 @@ The software consists of two parts:
   
   b) for the slave device [here](https://github.com/PaulskPt/ESP32S3_ESP-NOW/tree/main/src/slave).
   
-  In the "src" folder is a subfolder with a sketch to determine the MAC-address for each device [here](https://github.com/PaulskPt/ESP32S3_ESP-NOW/tree/main/src/get_MacAddress).
+  c) sketch to determine the MAC-address for each device [here](https://github.com/PaulskPt/ESP32S3_ESP-NOW/tree/main/src/get_MacAddress).
 
 ## MASTER DEVICE
 
