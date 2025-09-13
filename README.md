@@ -15,7 +15,7 @@
 
 
 ## Software
-The software consists of two parts: 
+The software consists of two ESP-NOW parts and one utility sketch: 
 
   a) for the master device [here](https://github.com/PaulskPt/ESP32S3_ESP-NOW/tree/main/src/master);
   
