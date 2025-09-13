@@ -38,7 +38,7 @@ SHORT DESCRIPTION:
 
 Hardware connected to the Lolin S3 PRO (slave) device:
   a) a small DS3231 external RTC board marked "DS3231 for Pi";
-  b) a Lolin 2.13inch e-Paper 3-color display, 250x122px. Needs SSD1680 driver module. See [repo](https://github.com/wemos/LOLIN_EPD_Library)
+  b) a Lolin 2.13inch e-Paper 3-color display, 250x122px. Needs EPD library. See [repo](https://github.com/wemos/LOLIN_EPD_Library)
 
 
 SHORT DESCRIPTION:
